@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
 
-const fineName = '02-write-file';
+const fineName = '02-write-file.txt';
 const absolutePath = path.resolve(__dirname, fineName);
 
 const writeStream = fs.createWriteStream(absolutePath, { flags: 'a' });
@@ -20,7 +20,7 @@ rl.on('line', (input) => {
     rl.close();
     writeStream.end();
   } else {
-    writeStream.write(`${input}`);
+    writeStream.write(`${input}\n`);
   }
 });
 rl.on('close', () => {
