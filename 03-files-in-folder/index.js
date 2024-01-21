@@ -10,10 +10,11 @@ async function filesInFolder() {
     for (const file of files) {
       if (file.isFile()) {
         const filePath = path.join(absolutePath, file.name);
-        const fileExtension = path.extname(file.name);
+        const fileExtension = path.extname(file.name).slice(1);
         const fileStat = await fs.stat(filePath);
         const fileName = file.name.split('.').slice(0, -1).join('.');
-        console.log(`${fileName} - ${fileExtension} - ${fileStat.size}`);
+        const fileSize = (fileStat.size / 1024).toFixed(3);
+        console.log(`${fileName} - ${fileExtension} - ${fileSize}kb`);
       }
     }
   } catch (err) {
