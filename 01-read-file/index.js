@@ -14,3 +14,6 @@ stream.on('data', (chunk) => {
 stream.on('end', () => {
   console.log(result);
 });
+stream.on('error', (error) => {
+  console.error('Произошла ошибка при чтении файла:', error);
+});
