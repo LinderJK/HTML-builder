@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const readline = require('readline');
 
-const fineName = 'text.txt';
+const fineName = '02-write-file';
 const absolutePath = path.resolve(__dirname, fineName);
 
 const writeStream = fs.createWriteStream(absolutePath, { flags: 'a' });
