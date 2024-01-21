@@ -11,4 +11,6 @@ stream.on('data', (chunk) => {
   result += chunk;
 });
 
-
+stream.on('end', () => {
+  console.log(result);
+});
