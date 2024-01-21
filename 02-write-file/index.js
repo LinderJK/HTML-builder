@@ -15,4 +15,12 @@ const rl = readline.createInterface({
   output: process.stdout,
 });
 
+rl.on('line', (input) => {
+  if (input.includes('exit')) {
+    rl.close();
+    writeStream.end();
+  } else {
+    writeStream.write(`${input}`);
+  }
+});
 
