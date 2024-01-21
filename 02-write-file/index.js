@@ -23,4 +23,6 @@ rl.on('line', (input) => {
     writeStream.write(`${input}`);
   }
 });
-
+rl.on('close', () => {
+  console.log('Программа завершена. Данные сохранены в файл:', fineName);
+});
