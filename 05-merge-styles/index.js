@@ -14,6 +14,11 @@ async function cssMerge() {
   const cssFiles = files.filter((file) => path.extname(file) === '.css');
   console.log(cssFiles, 'cssfiles');
 
+  const fileContentsPromises = cssFiles.map(async (cssFile) => {
+    const filePath = path.join(stylesDir, cssFile);
+    return await fs.readFile(filePath, 'utf-8');
+  });
+  console.log(fileContentsPromises);
 
 }
 
