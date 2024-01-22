@@ -11,6 +11,9 @@ async function cssMerge() {
   const files = await fs.readdir(stylesDir);
   console.log(files, 'files');
 
+  const cssFiles = files.filter((file) => path.extname(file) === '.css');
+  console.log(cssFiles, 'cssfiles');
+
 
 }
 
