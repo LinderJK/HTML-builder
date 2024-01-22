@@ -10,7 +10,12 @@ async function copyDir() {
   await fs.mkdir(newDirPath, { recursive: true });
   const files = await fs.readdir(dir);
 
-
+  for (const file of files) {
+    const sourceFilePath = path.join(dir, file);
+    const destinationFilePath = path.join(newDirPath, file);
+    await fs.copyFile(sourceFilePath, destinationFilePath);
+    console.log(`Файл скопирован: ${file}`);
+  }
 }
 
 copyDir();
