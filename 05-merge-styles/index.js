@@ -18,8 +18,9 @@ async function cssMerge() {
     const filePath = path.join(stylesDir, cssFile);
     return await fs.readFile(filePath, 'utf-8');
   });
-  console.log(fileContentsPromises);
 
+  const fileContents = await Promise.all(fileContentsPromises);
+  await fs.writeFile(cssBundle, fileContents.join('\n'), 'utf-8');
 }
 
 cssMerge();
