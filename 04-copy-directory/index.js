@@ -7,6 +7,16 @@ const dir = path.resolve(__dirname, dirName);
 async function copyDir() {
   const newDirPath = path.join(__dirname, 'files-copy');
 
+  try {
+    const existingFiles = await fs.readdir(newDirPath);
+    for (const file of existingFiles) {
+      const filePath = path.join(newDirPath, file);
+      await fs.unlink(filePath);
+    }
+  } catch (error) {
+    // Ошибка не выводится просто продолжаем работу
+  }
+
   await fs.mkdir(newDirPath, { recursive: true });
   const files = await fs.readdir(dir);
 
