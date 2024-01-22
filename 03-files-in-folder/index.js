@@ -6,7 +6,8 @@ async function filesInFolder() {
   const absolutePath = path.resolve(__dirname, pathName);
 
   try {
-    const files = await fs.readdir(absolutePath, { withFileTypes: true });
+    const files = await fs.readdir(absolutePath, { withFileTypes: true })
+
     for (const file of files) {
       if (file.isFile()) {
         const filePath = path.join(absolutePath, file.name);
